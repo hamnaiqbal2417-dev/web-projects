@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Falah Public School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16332C;
+    --sand: #F4EFE4;
+    --paper: #FBF8F1;
+    --teal: #1E5248;
+    --teal-dark: #123028;
+    --gold: #C99A3E;
+    --gold-light: #E8CE93;
+    --line: rgba(22, 51, 44, 0.14);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    margin: 0;
+    color: var(--teal-dark);
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 248, 241, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1080px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--teal); color: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .brand-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; color: var(--teal-dark); }
+  .brand-name span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; color: var(--teal); letter-spacing: 0.06em; }
+  nav ul {
+    display: flex; gap: 28px; list-style: none; margin: 0; padding: 0;
+  }
+  nav ul a {
+    font-size: 14px; font-weight: 500; color: var(--teal-dark);
+    padding: 6px 2px; border-bottom: 1px solid transparent;
+  }
+  nav ul a:hover { border-bottom-color: var(--gold); }
+  .nav-cta {
+    background: var(--teal); color: var(--sand);
+    padding: 9px 18px; border-radius: 6px; font-size: 14px; font-weight: 500;
+  }
+  .menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--teal-dark); cursor: pointer; }
+
+  /* Hero */
+  .hero {
+    background: var(--teal);
+    color: var(--sand);
+    padding: 88px 24px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; right: -60px; top: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    border: 1px solid rgba(232, 206, 147, 0.25);
+  }
+  .hero-inner { max-width: 1080px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 500; margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.12; max-width: 680px; color: var(--sand); }
+  .hero p.lead { font-size: 17px; max-width: 520px; margin-top: 18px; color: rgba(251, 248, 241, 0.82); }
+  .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--teal-dark);
+    padding: 13px 26px; border-radius: 6px; font-weight: 600; font-size: 15px;
+  }
+  .btn-ghost {
+    border: 1px solid rgba(251, 248, 241, 0.4); color: var(--sand);
+    padding: 13px 26px; border-radius: 6px; font-weight: 500; font-size: 15px;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(251, 248, 241, 0.16);
+    max-width: 780px;
+  }
+  .hero-stats .num { font-family: 'Fraunces', serif; font-size: 28px; color: var(--gold-light); font-weight: 600; }
+  .hero-stats .label { font-size: 12.5px; color: rgba(251, 248, 241, 0.7); margin-top: 4px; }
+
+  /* Sections */
+  section { padding: 84px 24px; }
+  .section-head { max-width: 560px; margin-bottom: 48px; }
+  .section-head .eyebrow { color: var(--teal); }
+  .section-head h2 { font-size: 32px; margin-top: 10px; }
+  .section-head p { color: #4B5D57; margin-top: 12px; font-size: 15.5px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-visual {
+    background: var(--sand); border-radius: 16px; padding: 32px;
+    border: 1px solid var(--line);
+  }
+  .about-visual .quote {
+    font-family: 'Fraunces', serif; font-size: 20px; font-style: italic;
+    color: var(--teal-dark); line-height: 1.5;
+  }
+  .about-visual .attr { margin-top: 16px; font-size: 13px; color: var(--teal); font-weight: 500; }
+
+  /* Academics cards */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .card .index { font-family: 'Fraunces', serif; font-size: 13px; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .card h3 { font-size: 18px; }
+  .card p { font-size: 14.5px; color: #4B5D57; margin-top: 10px; }
+
+  /* Facilities strip */
+  .facilities { background: var(--sand); }
+  .fac-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .fac-item { text-align: left; }
+  .fac-item .n { font-family: 'Fraunces', serif; font-size: 15px; color: var(--teal-dark); font-weight: 600; }
+  .fac-item p { font-size: 13.5px; color: #55655F; margin-top: 6px; }
+
+  /* Admissions timeline */
+  .timeline { border-left: 2px solid var(--line); padding-left: 28px; display: flex; flex-direction: column; gap: 30px; }
+  .step { position: relative; }
+  .step::before {
+    content: ""; position: absolute; left: -34px; top: 4px;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  }
+  .step h3 { font-size: 16.5px; }
+  .step p { font-size: 14.5px; color: #4B5D57; margin-top: 6px; max-width: 480px; }
+
+  /* Contact */
+  .contact-box {
+    background: var(--teal); color: var(--sand);
+    border-radius: 18px; padding: 52px 44px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+  .contact-box h2 { color: var(--sand); font-size: 28px; }
+  .contact-box p { color: rgba(251, 248, 241, 0.78); font-size: 14.5px; margin-top: 12px; }
+  .contact-list { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .contact-list li { font-size: 14.5px; display: flex; gap: 10px; }
+  .contact-list .k { color: var(--gold-light); font-weight: 500; min-width: 78px; }
+  form { display: flex; flex-direction: column; gap: 12px; }
+  form input, form textarea {
+    background: rgba(251, 248, 241, 0.08);
+    border: 1px solid rgba(251, 248, 241, 0.25);
+    border-radius: 6px; padding: 12px 14px; color: var(--sand); font-size: 14px;
+    font-family: 'Inter', sans-serif;
+  }
+  form input::placeholder, form textarea::placeholder { color: rgba(251, 248, 241, 0.5); }
+  form button {
+    background: var(--gold); color: var(--teal-dark); border: none;
+    padding: 12px; border-radius: 6px; font-weight: 600; font-size: 14.5px; cursor: pointer;
+    margin-top: 4px;
+  }
+  form button:hover { background: var(--gold-light); }
+  #formStatus { font-size: 13px; color: var(--gold-light); min-height: 16px; }
+
+  footer {
+    padding: 28px 24px; text-align: center; font-size: 13px; color: #6B7B75;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 860px) {
+    nav ul { display: none; }
+    .menu-toggle { display: block; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .about-grid, .card-grid, .fac-grid, .contact-box { grid-template-columns: 1fr; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">AF</div>
+      <div class="brand-name">Al-Falah Public School<span>Karachi, since 1994</span></div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get admission form</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Nursery through Matric</div>
+    <h1>Room for every child to think, question, and grow.</h1>
+    <p class="lead">Al-Falah Public School has stood in Karachi since 1994 — a place where academics, character, and confidence are built side by side.</p>
+    <div class="hero-actions">
+      <a href="#admissions" class="btn-primary">See how admissions work</a>
+      <a href="#about" class="btn-ghost">Learn about the school</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="num">30+</div>
+        <div class="label">Years of experience</div>
+      </div>
+      <div>
+        <div class="num">1,200</div>
+        <div class="label">Students enrolled</div>
+      </div>
+      <div>
+        <div class="num">65</div>
+        <div class="label">Experienced teachers</div>
+      </div>
+      <div>
+        <div class="num">18</div>
+        <div class="label">Years of A-grade results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom: 20px;">
+        <div class="eyebrow">About us</div>
+        <h2>A school that sees every child as an individual.</h2>
+      </div>
+      <p style="font-size: 15.5px; color: #4B5D57;">At Al-Falah, we believe education isn't confined to textbooks. Every class is kept small so teachers can give each student real attention. Science, the arts, and sports all carry equal weight in our curriculum.</p>
+      <p style="font-size: 15.5px; color: #4B5D57; margin-top: 14px;">Our goal isn't just good grades — it's raising citizens who can face the challenges ahead with confidence and responsibility.</p>
+    </div>
+    <div class="about-visual">
+      <div class="quote">"Education doesn't just teach you to answer — it teaches you to ask."</div>
+      <div class="attr">— The school's guiding principle, since 1994</div>
+    </div>
+  </div>
+</section>
+
+<section id="academics" style="background: var(--paper);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Academics</div>
+      <h2>Three stages, one purpose.</h2>
+      <p>From nursery to matric, the curriculum at every stage is shaped around the age and ability of the students in it.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="index">01 — Junior</div>
+        <h3>Nursery to grade 5</h3>
+        <p>A focus on foundational reading, math, and social skills, taught through play-based learning.</p>
+      </div>
+      <div class="card">
+        <div class="index">02 — Middle</div>
+        <h3>Grades 6 to 8</h3>
+        <p>Deeper work in science, computing, and languages, alongside debate and presentation skills.</p>
+      </div>
+      <div class="card">
+        <div class="index">03 — Matric</div>
+        <h3>Grades 9 to 10</h3>
+        <p>Board exam preparation, science and commerce streams, and career counselling sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="facilities" class="facilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Facilities</div>
+      <h2>A campus built to make learning easier.</h2>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-item">
+        <div class="n">Science labs</div>
+        <p>Separate labs for physics, chemistry, and biology, with hands-on experiments.</p>
+      </div>
+      <div class="fac-item">
+        <div class="n">Library</div>
+        <p>A collection of over 5,000 books, with quiet corners for reading.</p>
+      </div>
+      <div class="fac-item">
+        <div class="n">Sports ground</div>
+        <p>An open field for cricket, football, and athletics.</p>
+      </div>
+      <div class="fac-item">
+        <div class="n">Computer lab</div>
+        <p>A system for every student, with classes in coding and digital skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admissions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Admissions</div>
+      <h2>How to start a new session.</h2>
+      <p>The admissions process is simple and clear — it takes four easy steps to complete.</p>
+    </div>
+    <div class="timeline">
+      <div class="step">
+        <h3>Get the form</h3>
+        <p>Pick up an admission form from the school office or download it from the website.</p>
+      </div>
+      <div class="step">
+        <h3>Submit documents</h3>
+        <p>Bring the B-Form, the previous class's result card, and two photographs to the office.</p>
+      </div>
+      <div class="step">
+        <h3>Entry test or interview</h3>
+        <p>A short assessment appropriate to the grade, or a conversation with the parents.</p>
+      </div>
+      <div class="step">
+        <h3>Confirm admission</h3>
+        <p>Once results are out, the seat is confirmed after the fee is paid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background: var(--paper); padding-bottom: 80px;">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Get in touch</h2>
+        <p>For admissions, fees, or any other question, reach out using the details below, or send a message.</p>
+        <ul class="contact-list">
+          <li><span class="k">Address</span><span>Block 7, Gulshan-e-Iqbal, Karachi</span></li>
+          <li><span class="k">Phone</span><span>021-1234567</span></li>
+          <li><span class="k">Email</span><span>info@alfalahschool.edu.pk</span></li>
+          <li><span class="k">Hours</span><span>Monday to Friday, 8am – 2pm</span></li>
+        </ul>
+      </div>
+      <form id="contactForm">
+        <input type="text" placeholder="Your name" required>
+        <input type="tel" placeholder="Phone number" required>
+        <textarea placeholder="Write your message" rows="4" required></textarea>
+        <button type="submit">Send message</button>
+        <div id="formStatus"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Al-Falah Public School, Karachi. All rights reserved.
+</footer>
+
+<script>
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.textContent = 'Thanks — we will get back to you shortly.';
+    form.reset();
+  });
+</script>
+
+</body>
+</html
