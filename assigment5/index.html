@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Parlour</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff5f7;
+    color: #333;
+  }
+
+  /* Header */
+  header {
+    background: #d63384;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    animation: fadeDown 0.8s ease;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  header p {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  /* Navigation */
+  nav {
+    background: #ad1457;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 12px;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover {
+    text-decoration: none;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: #ffe0eb;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+    color: #ad1457;
+    margin-bottom: 10px;
+    animation: fadeUp 0.9s ease;
+  }
+
+  .hero p {
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    animation: fadeUp 1.1s ease;
+  }
+
+  .btn {
+    background: #d63384;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease;
+    animation: fadeUp 1.3s ease;
+  }
+
+  .btn:hover {
+    background: #ad1457;
+    transform: translateY(-3px);
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Section common */
+  section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  section h2 {
+    text-align: center;
+    color: #ad1457;
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  /* Services */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .service-box {
+    background: #fff;
+    border: 1px solid #f3c6d6;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(214, 51, 132, 0.15);
+  }
+
+  .service-box h3 {
+    color: #d63384;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .service-box p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .service-box .price {
+    font-weight: bold;
+    color: #ad1457;
+  }
+
+  /* About */
+  .about {
+    background: #ffe0eb;
+    border-radius: 8px;
+    padding: 30px;
+  }
+
+  .about p {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Contact */
+  .contact-box {
+    background: #fff;
+    border: 1px solid #f3c6d6;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .contact-box p {
+    margin: 8px 0;
+    font-size: 15px;
+  }
+
+  /* Footer */
+  footer {
+    background: #ad1457;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    margin-top: 30px;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Glow &amp; Grace Beauty Parlour</h1>
+    <p>Hair &bull; Skin &bull; Makeup &bull; Bridal</p>
+  </header>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <h2>Look Your Best, Every Day</h2>
+    <p>We provide professional beauty services in a friendly and relaxing environment. From haircuts to bridal makeup, every service is handled by our trained team.</p>
+    <a href="#contact" class="btn">Book Your Appointment</a>
+  </div>
+
+  <section id="services" class="reveal">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-box">
+        <h3>Hair Cutting &amp; Styling</h3>
+        <p>Haircut, blow dry, styling aur hair treatments.</p>
+        <p class="price">Rs. 1,500 se shuru</p>
+      </div>
+      <div class="service-box">
+        <h3>Facial &amp; Skin Care</h3>
+        <p>Cleansing, whitening aur anti-aging facials.</p>
+        <p class="price">Rs. 2,000 se shuru</p>
+      </div>
+      <div class="service-box">
+        <h3>Bridal Makeup</h3>
+        <p>Complete bridal package with hairdo aur draping.</p>
+        <p class="price">Rs. 8,000 se shuru</p>
+      </div>
+      <div class="service-box">
+        <h3>Manicure &amp; Pedicure</h3>
+        <p>Nail care, polish aur relaxing hand/foot spa.</p>
+        <p class="price">Rs. 1,000 se shuru</p>
+      </div>
+      <div class="service-box">
+        <h3>Threading &amp; Waxing</h3>
+        <p>Eyebrows, face aur full body waxing.</p>
+        <p class="price">Rs. 300 se shuru</p>
+      </div>
+      <div class="service-box">
+        <h3>Hair Spa</h3>
+        <p>Deep conditioning aur hair fall treatment.</p>
+        <p class="price">Rs. 1,800 se shuru</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <h2>About Us</h2>
+    <div class="about">
+      <p>Glow &amp; Grace Beauty Parlour pichle 10 saal se apni clients ko quality beauty services de raha hai. Hamari trained staff aur premium products ke sath, hum ensure karte hain ke aap yahan se hamesha satisfied jayen.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>Contact Us</h2>
+    <div class="contact-box">
+      <p><strong>Address:</strong> Shop 4, Block C, Main Boulevard, Karachi</p>
+      <p><strong>Phone:</strong> +92 300 0000000</p>
+      <p><strong>Email:</strong> info@glowandgrace.com</p>
+      <p><strong>Timings:</strong> Mon - Sat: 10am - 8pm | Sunday: 12pm - 6pm</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Glow &amp; Grace Beauty Parlour. All rights reserved.
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealItems.forEach(item => observer.observe(item));
+  </script>
+
+</body>
+</html>
