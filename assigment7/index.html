@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>BMI Calculator</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .card {
+    background: #20202f;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    width: 300px;
+    color: #fff;
+  }
+  h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 22px;
+    color: #4cd137;
+  }
+  .field {
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #ccc;
+  }
+  input {
+    width: 100%;
+    height: 42px;
+    background: #0f0f1a;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 16px;
+    outline: none;
+  }
+  button {
+    width: 100%;
+    height: 45px;
+    background: #4cd137;
+    border: none;
+    border-radius: 8px;
+    color: #0f0f1a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.15s;
+  }
+  button:active { transform: scale(0.97); }
+  #result {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 15px;
+    min-height: 20px;
+  }
+  #bmiValue {
+    font-size: 26px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .underweight { color: #ff9f43; }
+  .normal { color: #4cd137; }
+  .overweight { color: #ffa502; }
+  .obese { color: #e84118; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>BMI Calculator</h2>
+
+  <div class="field">
+    <label for="weight">Weight (kg)</label>
+    <input type="number" id="weight" placeholder="e.g. 65">
+  </div>
+
+  <div class="field">
+    <label for="height">Height (cm)</label>
+    <input type="number" id="height" placeholder="e.g. 170">
+  </div>
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const heightCm = parseFloat(document.getElementById('height').value);
+    const resultDiv = document.getElementById('result');
+
+    if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+      resultDiv.innerHTML = '<span style="color:#e84118">Sahi weight aur height dalein</span>';
+      return;
+    }
+
+    const heightM = heightCm / 100;
+    const bmi = weight / (heightM * heightM);
+    const bmiRounded = bmi.toFixed(1);
+
+    let category, className;
+    if (bmi < 18.5) {
+      category = 'Underweight';
+      className = 'underweight';
+    } else if (bmi < 25) {
+      category = 'Normal';
+      className = 'normal';
+    } else if (bmi < 30) {
+      category = 'Overweight';
+      className = 'overweight';
+    } else {
+      category = 'Obese';
+      className = 'obese';
+    }
+
+    resultDiv.innerHTML = `
+      <span id="bmiValue" class="${className}">${bmiRounded}</span>
+      <span class="${className}">${category}</span>
+    `;
+  }
+
+  // Enter key support
+  document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') calculateBMI();
+    });
+  });
+</script>
+
+</body>
+</html>
